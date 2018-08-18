@@ -1,4 +1,4 @@
 name: ${project.name}
-main: br.com.azalim.bungeepluginmanager.BungeePluginManager
+main: ${project.groupId}.${project.artifactId}.${project.name}
 version: ${project.version}
-author: _Shevchik_, Azalim, VaiTon86
+author: ${plugin.author}

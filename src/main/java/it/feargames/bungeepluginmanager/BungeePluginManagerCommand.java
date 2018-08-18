@@ -57,7 +57,7 @@ public final class BungeePluginManagerCommand extends Command {
             case "unload": {
                 try {
                     final PluginDescription unloadedDescription = pluginManager.unloadPlugin(argument);
-                    sender.sendMessage(textWithColor("Unloaded " + unloadedDescription.getName() + " " + unloadedDescription.getVersion() + "...", YELLOW));
+                    sender.sendMessage(textWithColor("Unloaded " + unloadedDescription.getName() + " " + unloadedDescription.getVersion(), YELLOW));
                 } catch (PluginNotLoadedException | PluginUnloadException e) {
                     sender.sendMessage(textWithColor(e.getMessage(), RED));
                 }
@@ -67,7 +67,7 @@ public final class BungeePluginManagerCommand extends Command {
                 sender.sendMessage(textWithColor("Reloading " + argument + "...", YELLOW));
                 try {
                     final PluginDescription loadedDescription = pluginManager.loadPlugin(argument);
-                    sender.sendMessage(textWithColor("Loaded " + loadedDescription.getName() + " " + loadedDescription.getVersion() + "...", GREEN));
+                    sender.sendMessage(textWithColor("Loaded " + loadedDescription.getName() + " " + loadedDescription.getVersion(), GREEN));
                 } catch (PluginLoadException e) {
                     sender.sendMessage(textWithColor(e.getMessage(), RED));
                 }
@@ -77,9 +77,9 @@ public final class BungeePluginManagerCommand extends Command {
                 sender.sendMessage(textWithColor("Reloading " + argument + "...", GOLD));
                 try {
                     final PluginDescription unloadedDescription = pluginManager.unloadPlugin(argument);
-                    sender.sendMessage(textWithColor("Unloaded " + unloadedDescription.getName() + " " + unloadedDescription.getVersion() + "...", YELLOW));
+                    sender.sendMessage(textWithColor("Unloaded " + unloadedDescription.getName() + " " + unloadedDescription.getVersion(), YELLOW));
                     final PluginDescription loadedDescription = pluginManager.loadPlugin(argument);
-                    sender.sendMessage(textWithColor("Loaded " + loadedDescription.getName() + " " + loadedDescription.getVersion() + "...", GREEN));
+                    sender.sendMessage(textWithColor("Loaded " + loadedDescription.getName() + " " + loadedDescription.getVersion(), GREEN));
                 } catch (PluginNotLoadedException | PluginUnloadException | PluginLoadException e) {
                     sender.sendMessage(textWithColor(e.getMessage(), RED));
                 }

@@ -36,7 +36,7 @@ public final class BungeePluginManager extends Plugin {
     private ModifiedPluginEventBus pluginEventBus;
 
     @Override
-    public void onEnable() {
+    public void onLoad() {
         // Server components
         this.proxy = getProxy();
         this.scheduler = proxy.getScheduler();
@@ -49,9 +49,12 @@ public final class BungeePluginManager extends Plugin {
             pluginEventBus = new ModifiedPluginEventBus(proxy.getLogger());
             ReflectionUtils.setFieldValue(pluginManager, "eventBus", pluginEventBus);
         } catch (Throwable t) {
-            ConsoleLogger.exception("Unable to inject into the PluginEventBus!", t);
-            return;
+            throw new IllegalStateException("Unable to inject into the PluginEventBus!", t);
         }
+    }
+
+    @Override
+    public void onEnable() {
         // Register commands
         pluginManager.registerCommand(this, new BungeePluginManagerCommand(this));
     }
